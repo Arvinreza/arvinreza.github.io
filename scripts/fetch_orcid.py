@@ -145,7 +145,8 @@ def crossref_metadata(doi: str) -> dict:
     if mailto:
         url += "?" + urlencode({"mailto": mailto})
     try:
-        data = get_json(url, timeout=9, tries=1).get("message") or {}
+        time.sleep(0.35)  # Reduce concurrent API pressure on shared CI runners.
+        data = get_json(url, timeout=9, tries=4).get("message") or {}
     except Exception as exc:
         print(f"Crossref enrichment unavailable for {doi}: {exc}", file=sys.stderr)
         return {}
@@ -172,7 +173,7 @@ def crossref_metadata(doi: str) -> dict:
     }
 
 
-def enrich(entries: list[dict], workers: int = 4) -> None:
+def enrich(entries: list[dict], workers: int = 1) -> None:
     doi_entries = {e["doi"]: e for e in entries if e.get("doi")}
     if not doi_entries:
         return
@@ -184,6 +185,21 @@ def enrich(entries: list[dict], workers: int = 4) -> None:
             for field in ("authors", "venue", "volume", "issue", "pages", "year"):
                 if extra.get(field) and not item.get(field):
                     item[field] = extra[field]
+
+
+def preserve_cached_metadata(entries: list[dict], snapshot_path: Path) -> None:
+    """Retain previously verified enrichment when a metadata service rate-limits us."""
+    try:
+        old = json.loads(snapshot_path.read_text(encoding="utf-8"))
+        cached = {normalize_doi(e.get("doi")): e for e in old.get("publications", [])
+                  if isinstance(e, dict) and normalize_doi(e.get("doi"))}
+    except (OSError, TypeError, ValueError):
+        return
+    for entry in entries:
+        previous = cached.get(normalize_doi(entry.get("doi"))) or {}
+        for field in ("authors", "venue", "volume", "issue", "pages", "year"):
+            if not entry.get(field) and previous.get(field):
+                entry[field] = previous[field]
 
 
 def merge_manual(entries: list[dict], manual_path: Path) -> list[dict]:
@@ -237,6 +253,7 @@ def main() -> int:
         return 1
     if not args.no_crossref:
         enrich(entries)
+    preserve_cached_metadata(entries, args.output)
     entries = merge_manual(entries, ROOT / "data/manual_publications.json")
     entries.sort(key=lambda e: (-(e.get("year") or 0), (e.get("title") or "").casefold()))
     result = {
