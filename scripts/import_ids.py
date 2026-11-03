@@ -29,7 +29,7 @@ def clean(text):
 
 def title_and_details(biblio: str, dd) -> tuple[str, str]:
     # An IDS monograph can introduce its series with '(= ...)' before the imprint.
-    series = re.search(r"\\s*\\.\\s*(?=\\(=)", biblio)
+    series = re.search(r"\s*\.\s*(?=\(=)", biblio)
     if series:
         return biblio[:series.start()].strip(), biblio[series.end():].strip()
     # Ordinary journal articles and book chapters have 'In:' as delimiter.
@@ -74,7 +74,7 @@ def parse_row(dt, dd):
     bibliography = clean(dd.get_text(" ", strip=True).split(" → ")[0])
     title, details = title_and_details(bibliography, dd)
     # Inline HTML links sometimes introduce a space before a colon or full stop.
-    title = re.sub(r"\\s+([:,.!?])", r"\\1", title).replace("\\u00ad", "")
+    title = re.sub(r"\s+([:,.!?])", r"\1", title).replace("\u00ad", "")
     urls = {}
     for link in dd.find_all("a", href=True):
         href = urljoin(URL, link["href"])
