@@ -29,20 +29,22 @@ def clean(text):
 
 def title_and_details(biblio: str, dd) -> tuple[str, str]:
     # Ordinary journal articles and book chapters have 'In:' as delimiter.
-    m = re.search(r"\.\s+In:\s+", biblio)
+    m = re.search(r"([.?!])\s+In:\s+", biblio)
     if m:
-        return biblio[: m.start()].strip(), biblio[m.start() + 2 :].strip()
+        suffix = m.group(1) if m.group(1) != "." else ""
+        return biblio[: m.start()].strip() + suffix, biblio[m.start() + len(m.group(1)) + 1 :].strip()
 
     # A minority of dissertations, preprints, software and other standalone
     # items do not have an 'In:'. These use a publisher/location delimiter.
     m = re.search(
-        r"\.\s+(?=(?:Dissertation\.|Arbeitspapier\.|"
+        r"([.?!])\s+(?=(?:Dissertation\.|Arbeitspapier\.|"
         r"(?:Charlottesville(?:, VA)?|Ithaca, NY|Mannheim|Oxford|Berlin/Boston|"
         r"Bozen|OSF Preprints|Stata program|\(=)\b))",
         biblio
     )
     if m:
-        return biblio[: m.start()].strip(), biblio[m.end() :].strip()
+        suffix = m.group(1) if m.group(1) != "." else ""
+        return biblio[: m.start()].strip() + suffix, biblio[m.end() :].strip()
 
     # Titles linked directly at the beginning of the bibliographic item
     # provide an additional reliable boundary when present.
