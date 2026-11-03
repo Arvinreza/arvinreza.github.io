@@ -1,5 +1,108 @@
 {
   "orcid": "0000-0002-9630-9680",
-  "generated_at": null,
-  "publications": []
+  "generated_at": "2026-11-03T06:29:46+00:00",
+  "publications": [
+    {
+      "title": "Analysis of language diversity on islands requires adequate statistical modelling - a comment on Bromham, Yaxley and Cardillo (2024)",
+      "year": 2026,
+      "type_label": "Preprint",
+      "doi": "10.31219/osf.io/xbu2k_v3",
+      "url": "https://doi.org/10.31219/osf.io/xbu2k_v3",
+      "venue": "",
+      "authors": [
+        "Alexander Koplenig"
+      ],
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "source": "orcid"
+    },
+    {
+      "title": "Does corpus size influence normalised frequencies?",
+      "year": 2026,
+      "type_label": "Journal article",
+      "doi": "10.1515/cllt-2024-0040",
+      "url": "https://doi.org/10.1515/cllt-2024-0040",
+      "venue": "Corpus Linguistics and Linguistic Theory",
+      "authors": [],
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "source": "orcid"
+    },
+    {
+      "title": "Human languages trade off complexity against efficiency",
+      "year": 2025,
+      "type_label": "Journal article",
+      "doi": "10.1371/journal.pcsy.0000032",
+      "url": "https://doi.org/10.1371/journal.pcsy.0000032",
+      "venue": "PLOS Complex Systems",
+      "authors": [
+        "Alexander Koplenig",
+        "Sascha Wolfer",
+        "Jan Oliver Rüdiger",
+        "Peter Meyer"
+      ],
+      "volume": "2",
+      "issue": "2",
+      "pages": "e0000032",
+      "source": "orcid"
+    },
+    {
+      "title": "Statistical errors undermine claims about the evolution of polysynthetic languages",
+      "year": 2025,
+      "type_label": "Journal article",
+      "doi": "10.1073/pnas.2518416122",
+      "url": "https://doi.org/10.1073/pnas.2518416122",
+      "venue": "Proceedings of the National Academy of Sciences",
+      "authors": [],
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "source": "orcid"
+    },
+    {
+      "title": "Still No Evidence for an Effect of the Proportion of Non-Native Speakers on Natural Language Complexity",
+      "year": 2024,
+      "type_label": "Journal article",
+      "doi": "10.3390/e26110993",
+      "url": "https://doi.org/10.3390/e26110993",
+      "venue": "Entropy",
+      "authors": [
+        "Alexander Koplenig"
+      ],
+      "volume": "26",
+      "issue": "11",
+      "pages": "993",
+      "source": "orcid"
+    },
+    {
+      "title": "Text length strongly matters when analysing word frequency distributions",
+      "year": 2024,
+      "type_label": "Preprint",
+      "doi": "10.31219/osf.io/p5nhd",
+      "url": "https://doi.org/10.31219/osf.io/p5nhd",
+      "venue": "",
+      "authors": [
+        "Alexander Koplenig"
+      ],
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "source": "orcid"
+    },
+    {
+      "title": "Language structure is influenced by the number of speakers but seemingly not by the proportion of non-native speakers",
+      "year": 2019,
+      "type_label": "Journal article",
+      "doi": "10.1098/rsos.181274",
+      "url": "https://doi.org/10.1098/rsos.181274",
+      "venue": "Royal Society Open Science",
+      "authors": [],
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "source": "orcid"
+    }
+  ]
 }
