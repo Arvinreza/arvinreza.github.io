@@ -24,21 +24,21 @@ FIELDNAMES = [
 
 
 def clean(text):
-    return re.sub(r"\\s+", " ", text.replace("\\xa0", " ")).strip()
+    return re.sub(r"\s+", " ", text.replace("\xa0", " ")).strip()
 
 
 def title_and_details(biblio: str, dd) -> tuple[str, str]:
     # Ordinary journal articles and book chapters have 'In:' as delimiter.
-    m = re.search(r"\\.\\s+In:\\s+", biblio)
+    m = re.search(r"\.\s+In:\s+", biblio)
     if m:
         return biblio[: m.start()].strip(), biblio[m.start() + 2 :].strip()
 
     # A minority of dissertations, preprints, software and other standalone
     # items do not have an 'In:'. These use a publisher/location delimiter.
     m = re.search(
-        r"\\.\\s+(?=(?:Dissertation\\.|Arbeitspapier\\.|"
+        r"\.\s+(?=(?:Dissertation\.|Arbeitspapier\.|"
         r"(?:Charlottesville(?:, VA)?|Ithaca, NY|Mannheim|Oxford|Berlin/Boston|"
-        r"Bozen|OSF Preprints|Stata program|\\(=)\\b))",
+        r"Bozen|OSF Preprints|Stata program|\(=)\b))",
         biblio
     )
     if m:
@@ -58,7 +58,7 @@ def title_and_details(biblio: str, dd) -> tuple[str, str]:
 
 def parse_row(dt, dd):
     byline = clean(dt.get_text(" ", strip=True))
-    match = re.fullmatch(r"(.+?) \\((\\d{4})\\):", byline)
+    match = re.fullmatch(r"(.+?) \((\d{4})\):", byline)
     if not match:
         raise ValueError(f"Unexpected author/year line: {byline}")
     authors, year = match.group(1), int(match.group(2))
