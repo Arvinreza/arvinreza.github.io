@@ -1,6 +1,6 @@
 {
   "orcid": "0000-0002-9630-9680",
-  "generated_at": "2026-11-03T06:29:46+00:00",
+  "generated_at": "2026-11-03T06:32:50+00:00",
   "publications": [
     {
       "title": "Analysis of language diversity on islands requires adequate statistical modelling - a comment on Bromham, Yaxley and Cardillo (2024)",
@@ -24,10 +24,13 @@
       "doi": "10.1515/cllt-2024-0040",
       "url": "https://doi.org/10.1515/cllt-2024-0040",
       "venue": "Corpus Linguistics and Linguistic Theory",
-      "authors": [],
-      "volume": "",
-      "issue": "",
-      "pages": "",
+      "authors": [
+        "Sascha Wolfer",
+        "Alexander Koplenig"
+      ],
+      "volume": "22",
+      "issue": "3",
+      "pages": "655-676",
       "source": "orcid"
     },
     {
@@ -55,10 +58,13 @@
       "doi": "10.1073/pnas.2518416122",
       "url": "https://doi.org/10.1073/pnas.2518416122",
       "venue": "Proceedings of the National Academy of Sciences",
-      "authors": [],
-      "volume": "",
-      "issue": "",
-      "pages": "",
+      "authors": [
+        "Alexander Koplenig",
+        "Sascha Wolfer"
+      ],
+      "volume": "122",
+      "issue": "41",
+      "pages": "e2518416122",
       "source": "orcid"
     },
     {
@@ -98,10 +104,12 @@
       "doi": "10.1098/rsos.181274",
       "url": "https://doi.org/10.1098/rsos.181274",
       "venue": "Royal Society Open Science",
-      "authors": [],
-      "volume": "",
-      "issue": "",
-      "pages": "",
+      "authors": [
+        "Alexander Koplenig"
+      ],
+      "volume": "6",
+      "issue": "2",
+      "pages": "181274",
       "source": "orcid"
     }
   ]
